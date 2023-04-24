@@ -20,17 +20,18 @@ function FeedbackForm() {
   }, [editFeedback])
 
   const handleTextChange = e => {
-    if (text === "") {
+    const newText = e.target.value
+    setText(newText)
+    if (newText === "") {
       setBtnDisabled(true)
       setMessage("")
-    } else if (text !== "" && text.length < 10) {
+    } else if (newText !== "" || newText.length < 10) {
       setMessage("Should be at least 10 characters")
       setBtnDisabled(true)
     } else {
       setBtnDisabled(false)
       setMessage("")
     }
-    setText(e.target.value)
   }
 
   const handleSubmit = e => {
